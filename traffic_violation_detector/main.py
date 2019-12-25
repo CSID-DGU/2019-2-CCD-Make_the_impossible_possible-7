@@ -265,37 +265,7 @@ def main(yolo):
 
 
             #intersect A line
-            for j in range(1, len(pts[track.track_id])):
-                    if pts[track.track_id][0] is None or pts[track.track_id][1] is None:
-                       continue
-                    thickness = int(np.sqrt(64 / float(j + 1)) * 2)
-                    cv2.line(frame,(pts[track.track_id][j-1]), (pts[track.track_id][j]),(color),thickness)
-                    if intersect(pts[track.track_id][j - 1], pts[track.track_id][j], line[0], line[1]):
-                        violation_id[track.track_id] = True
-                    #if intersect(bts[track.track_id][0], bts[track.track_id][1], A_line[0], A_line[1]):
-                        #frame_count[track.track_id] = frame_index
-
-                    #if intersect(bts[track.track_id][0], bts[track.track_id][1], B_line[0], B_line[1]):
-                        #if frame_index == frame_count[track.track_id]:
-                            #continue
-                        #speed[track.track_id]=324./(frame_index-frame_count[track.track_id])
-                        #print(str(speed[track.track_id])+"km/h id:"+str(track.track_id))
-                        #if speed[track.track_id] >20:
-                            #highspeed.append(speed[track.track_id])
-            #this is for speed meter
-            for j in range(1, len(bts[track.track_id])):
-                    if bts[track.track_id][0] is None or bts[track.track_id][1] is None:
-                       continue
-                    if intersect(bts[track.track_id][0], bts[track.track_id][1], A_line[0], A_line[1]):
-                        frame_count[track.track_id] = frame_index
-
-                    if intersect(bts[track.track_id][0], bts[track.track_id][1], B_line[0], B_line[1]):
-                        if frame_index == frame_count[track.track_id]:
-                            continue
-                        speed[track.track_id]=324./(frame_index-frame_count[track.track_id])
-                        print(str(speed[track.track_id])+"km/h id:"+str(track.track_id))
-                        if speed[track.track_id] >20:
-                            highspeed.append(speed[track.track_id])
+            
 
 
             if violation_id[track.track_id] == True:
